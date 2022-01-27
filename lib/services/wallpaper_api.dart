@@ -9,15 +9,19 @@ class WallpaperController extends GetxController {
   var streetWallpapers = <WallpaperModel>[].obs;
   var travelWallpapers = <WallpaperModel>[].obs;
 
+  var isPopularLoading = true.obs;
+  var isStreetLoading = true.obs;
+  var isTravelLoading = true.obs;
+
   Future<void> getAllWallpapers() async {
     try {
       var response = await Dio().get('https://api.unsplash.com/photos/?client_id=$key&per_page=20');
-      print(response.data);
       if (response.statusCode == 200) {
         var parsedData = response.data;
         wallpaperList.value = parsedData
             .map<WallpaperModel>((json) => WallpaperModel.fromJson(json))
             .toList();
+        isPopularLoading.value = false;
       }
     } catch (e) {
       print(e);
@@ -27,13 +31,13 @@ class WallpaperController extends GetxController {
   Future<void> getStreetWallpapers() async {
     try {
       var response = await Dio().get('https://api.unsplash.com/search/photos?page=1&query=street&client_id=$key');
-      print(response.data);
       if (response.statusCode == 200) {
         var parsedData = response.data['results'];
         print(parsedData);
         streetWallpapers.value = parsedData
             .map<WallpaperModel>((json) => WallpaperModel.fromJson(json))
             .toList();
+        isStreetLoading.value = false;
       }
     } catch (e) {
       print(e);
@@ -43,12 +47,12 @@ class WallpaperController extends GetxController {
   Future<void> getTravelWallpapers() async {
     try {
       var response = await Dio().get('https://api.unsplash.com/search/photos?page=1&query=travel&client_id=$key');
-      print(response.data);
       if (response.statusCode == 200) {
         var parsedData = response.data['results'];
         travelWallpapers.value = parsedData
             .map<WallpaperModel>((json) => WallpaperModel.fromJson(json))
             .toList();
+        isTravelLoading.value = false;
       }
     } catch (e) {
       print(e);

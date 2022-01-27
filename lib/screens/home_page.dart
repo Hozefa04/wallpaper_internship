@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
       ),
       body: TabBarView(
         controller: myTabController.controller,
-        children: const [
+        children: [
           PopularTab(),
           StreetTab(),
           TravelTab(),

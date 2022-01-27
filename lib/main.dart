@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallpapers/routes.dart';
-import 'package:wallpapers/screens/home_page.dart';
+import 'package:wallpapers/services/wallpaper_api.dart';
 import 'package:wallpapers/utilities/colors.dart';
 
 void main() {
+  Get.put(WallpaperController());
   runApp(const MyApp());
 }
 
