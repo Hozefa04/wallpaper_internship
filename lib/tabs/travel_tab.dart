@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
+import 'package:wallpapers/screens/wallpaper_page.dart';
 import 'package:wallpapers/services/wallpaper_api.dart';
 
 class TravelTab extends StatefulWidget {
@@ -34,9 +36,19 @@ class _TravelTabState extends State<TravelTab> {
                   crossAxisCount: 2,
                 ),
                 itemBuilder: (context, index) {
-                  return Image.network(
-                    controller.travelWallpapers[index].urls['small'],
-                    fit: BoxFit.cover,
+                  return InkWell(
+                    onTap: () {
+                      Get.toNamed(
+                        '/wallpaper',
+                        arguments: [
+                          controller.travelWallpapers[index].urls['full']
+                        ],
+                      );
+                    },
+                    child: Image.network(
+                      controller.travelWallpapers[index].urls['small'],
+                      fit: BoxFit.cover,
+                    ),
                   );
                 },
               );

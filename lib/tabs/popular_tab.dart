@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
+import 'package:wallpapers/screens/wallpaper_page.dart';
 import 'package:wallpapers/services/wallpaper_api.dart';
 
 class PopularTab extends StatefulWidget {
@@ -12,7 +15,6 @@ class PopularTab extends StatefulWidget {
 }
 
 class _PopularTabState extends State<PopularTab> {
-
   @override
   void initState() {
     super.initState();
@@ -35,9 +37,19 @@ class _PopularTabState extends State<PopularTab> {
                   crossAxisCount: 2,
                 ),
                 itemBuilder: (context, index) {
-                  return Image.network(
-                    controller.wallpaperList[index].urls['small'],
-                    fit: BoxFit.cover,
+                  return InkWell(
+                    onTap: () {
+                      Get.toNamed(
+                        '/wallpaper',
+                        arguments: [
+                          controller.wallpaperList[index].urls['full']
+                        ],
+                      );
+                    },
+                    child: Image.network(
+                      controller.wallpaperList[index].urls['small'],
+                      fit: BoxFit.cover,
+                    ),
                   );
                 },
               );
