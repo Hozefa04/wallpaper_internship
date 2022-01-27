@@ -12,7 +12,7 @@ class WallpaperPage extends StatelessWidget {
       body: Stack(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height,
+            height: Get.height,
             child: Image.network(
               data[0],
               fit: BoxFit.cover,

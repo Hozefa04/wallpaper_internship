@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:wallpapers/models/wallpaper.dart';
+import 'package:wallpapers/models/wallpaper_model.dart';
 
 class WallpaperController extends GetxController {
   final String key = "e6swVLsY4pG6V_uTprjHYP4yRwx6nwgfjHqTBSnHnGU";
 
-  var wallpaperList = <Wallpaper>[].obs;
-  var streetWallpapers = <Wallpaper>[].obs;
-  var travelWallpapers = <Wallpaper>[].obs;
+  var wallpaperList = <WallpaperModel>[].obs;
+  var streetWallpapers = <WallpaperModel>[].obs;
+  var travelWallpapers = <WallpaperModel>[].obs;
 
   Future<void> getAllWallpapers() async {
     try {
@@ -16,7 +16,7 @@ class WallpaperController extends GetxController {
       if (response.statusCode == 200) {
         var parsedData = response.data;
         wallpaperList.value = parsedData
-            .map<Wallpaper>((json) => Wallpaper.fromJson(json))
+            .map<WallpaperModel>((json) => WallpaperModel.fromJson(json))
             .toList();
       }
     } catch (e) {
@@ -32,7 +32,7 @@ class WallpaperController extends GetxController {
         var parsedData = response.data['results'];
         print(parsedData);
         streetWallpapers.value = parsedData
-            .map<Wallpaper>((json) => Wallpaper.fromJson(json))
+            .map<WallpaperModel>((json) => WallpaperModel.fromJson(json))
             .toList();
       }
     } catch (e) {
@@ -47,7 +47,7 @@ class WallpaperController extends GetxController {
       if (response.statusCode == 200) {
         var parsedData = response.data['results'];
         travelWallpapers.value = parsedData
-            .map<Wallpaper>((json) => Wallpaper.fromJson(json))
+            .map<WallpaperModel>((json) => WallpaperModel.fromJson(json))
             .toList();
       }
     } catch (e) {
