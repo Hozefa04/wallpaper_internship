@@ -16,6 +16,13 @@ class WallpaperPage extends StatelessWidget {
             height: Get.height,
             child: Image.network(
               data[0],
+              loadingBuilder: (context, child, loading) {
+                return loading == null
+                    ? child
+                    : const Center(
+                        child: CircularProgressIndicator(),
+                      );
+              },
               fit: BoxFit.cover,
             ),
           ),
