@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
         bottom: TabBar(
+          indicatorColor: AppColors.whiteColor,
           controller: myTabController.controller,
           tabs: myTabController.myTabs,
         ),
