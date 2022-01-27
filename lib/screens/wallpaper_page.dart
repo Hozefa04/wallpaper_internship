@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wallpapers/utilities/colors.dart';
 
 class WallpaperPage extends StatelessWidget {
   const WallpaperPage({Key? key}) : super(key: key);
@@ -26,16 +27,16 @@ class WallpaperPage extends StatelessWidget {
               width: 44,
               alignment: Alignment.center,
               padding: const EdgeInsets.all(4.0),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.blue,
+                color: AppColors.primaryColor,
               ),
               child: IconButton(
                 alignment: Alignment.center,
                 onPressed: () => Get.back(),
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_ios,
-                  color: Colors.white,
+                  color: AppColors.whiteColor,
                 ),
               ),
             ),
