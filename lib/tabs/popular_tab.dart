@@ -4,8 +4,8 @@ import 'package:wallpapers/services/wallpaper_api.dart';
 import 'package:wallpapers/widgets/wallpaper_grid.dart';
 
 class PopularTab extends StatelessWidget {
+  final WallpaperController controller = Get.find();
   PopularTab({Key? key}) : super(key: key);
-  WallpaperController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
